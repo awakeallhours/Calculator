@@ -21,8 +21,8 @@ screen.className = 'screen'
 screen.textContent = 80085
 calc.appendChild(screen)
 
-const buttons = document.createElement('div')
-buttons.className = 'buttons'
+const buttonsContainer = document.createElement('div')
+buttonsContainer.className = 'buttonsContainer'
 
 const buttonNames = [
     '7','4','1','AC',
@@ -43,16 +43,28 @@ for(let i = 0; i < 4; i++) {
         column.id = `${[j]}`
         column.textContent = buttonNames[nameIndex++]
         column.setAttribute('style', 'color: orange; background-color: black;')
-        
         row.appendChild(column)
     }
     
-    buttons.appendChild(row)
+    buttonsContainer.appendChild(row)
+
+    const buttons = document.querySelectorAll('button')
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.textContent;
+            if(button.classList.contains('number')) {
+                screen.textContent += value
+            }
+            else if(button.classList.contains('operator')) {
+                screen.textContent += `${value}`
+            }
+        })
+    })
 
 
 }
 
-calc.appendChild(buttons)
+calc.appendChild(buttonsContainer)
 
 
 
@@ -106,11 +118,17 @@ switch(operand) {
 }
 }
 
+function showCalcs(num1, op, num2) {
+    if(!screen) {
+        console.error("Screen element not found")
+        return;
+    }
+    screen.textContent = Operate(`${num1} ${op} ${num2}`)
+    
+    
+
+   
+}
+
 //END Functions
-Add(2,2)
-Reset()
-Subtract(4,2)
-Multiply(2,4)
-Divide(8,2)
-Operate(2,'+',2)
-Operate(2,'-',2)
+showCalcs()
