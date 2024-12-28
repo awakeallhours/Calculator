@@ -4,3 +4,45 @@
     height: auto;
     justify-content: center;
 }
+
+.calc {
+    display: flex;
+    flex-direction: column;
+    height : 480px;
+    width : 300px;
+    background-color: rgb(34, 34, 34);
+}
+
+.screen {
+    display: flex;
+    margin: auto;
+    border: solid black 2px;
+    justify-content: center;
+    height: 40px;
+    width: 200px;
+    background-color: #484646;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.buttons {
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 400px;
+    width: 200px;
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    margin: 5px;
+    flex-wrap: nowrap;
+    
+    
+}
