@@ -117,7 +117,7 @@ switch(operand) {
     default : console.log("ERROR")
 }
 }
-
+//!!!!!! REMEMBER TO TEST BUTTONS WOITH CONSOLE LOG
 function showCalcs(num1, op, num2) {
     if(!screen) {
         console.error("Screen element not found")
