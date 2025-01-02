@@ -48,15 +48,16 @@ for(let i = 0; i < 4; i++) {
     
     buttonsContainer.appendChild(row)
 
+    //screen can be printed to currently in show calc
+
+    //buttons need to log to console, not using correct
+    //id or something....
     const buttons = document.querySelectorAll('button')
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            const value = button.textContent;
-            if(button.classList.contains('number')) {
-                screen.textContent += value
-            }
-            else if(button.classList.contains('operator')) {
-                screen.textContent += `${value}`
+            if(button.textContent !== 'AC') {
+                console.log(button)
+                console.log(button.textContent)
             }
         })
     })
@@ -119,11 +120,20 @@ switch(operand) {
 }
 //!!!!!! REMEMBER TO TEST BUTTONS WOITH CONSOLE LOG
 function showCalcs(num1, op, num2) {
-    if(!screen) {
+    screen.textContent = ''
+    /*if(!screen) {
         console.error("Screen element not found")
         return;
-    }
-    screen.textContent = Operate(`${num1} ${op} ${num2}`)
+    }*/
+        
+        op1 = num1;
+        operand = op;
+        op2 = num2;
+
+    
+    screen.textContent += num1 
+    
+    Operate(num1, op, num2)
     
     
 
@@ -131,4 +141,5 @@ function showCalcs(num1, op, num2) {
 }
 
 //END Functions
-showCalcs()
+showCalcs(1,'-',1)
+//Operate(1,"+",1)
