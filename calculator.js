@@ -48,22 +48,40 @@ for(let i = 0; i < 4; i++) {
     
     buttonsContainer.appendChild(row)
 
-    //screen can be printed to currently in show calc
+}
+calc.appendChild(buttonsContainer)
 
-    //buttons need to log to console, not using correct
-    //id or something....
-    const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('button')
+   //this function is alomst there, needs to recognise numbers and then assign 
+   //them to the op1 op2 variables
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            if(button.textContent !== 'AC') {
-                console.log(button)
-                console.log(button.textContent)
+            if(isNaN(button.textContent) && button.textContent != 'AC' && button.textContent !== '=') //||isNaN(button.textContent) )
+            {
+                operand = button.textContent
+                console.log(`${button.textContent} is operand`)
+                if(op1 = 0 && operand === undefined) {
+                    op1 = button.textContent
+                    console.log(`op1 ${op1}`)
+                }
             }
+            else if(button.textContent === 'AC') {
+                console.log('Reset Button')
+                Reset();
+                
+            }
+            else if(button.textContent === '=') {
+                console.log('Equals button')
+                showCalcs()
+            }
+            if(op1 = 0) {
+
+            }
+            console.log(`button text content ${button.textContent}`)
+            
         })
+        return button
     })
-
-
-}
 
 calc.appendChild(buttonsContainer)
 
@@ -134,7 +152,7 @@ function showCalcs(num1, op, num2) {
     screen.textContent += num1 
     
     Operate(num1, op, num2)
-    
+   
     
 
    
@@ -142,4 +160,3 @@ function showCalcs(num1, op, num2) {
 
 //END Functions
 showCalcs(1,'-',1)
-//Operate(1,"+",1)
