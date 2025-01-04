@@ -1,8 +1,10 @@
 //Global Variables
 let ans = 0;
-let op1 = 0;
-let op2 = 0;
-let operand;
+let op1 = null;
+let op2 = null;
+let operand = null;
+let op1Store = []
+let parsed
 
 
 
@@ -28,7 +30,7 @@ const buttonNames = [
     '7','4','1','AC',
     '8','5','2','0',
     '9','6','3','=',
-    '+','-','x','/'
+    '+','-','*','/'
 ]
 
 let nameIndex = 0
@@ -52,8 +54,6 @@ for(let i = 0; i < 4; i++) {
 calc.appendChild(buttonsContainer)
 
 const buttons = document.querySelectorAll('button')
-   //this function is alomst there, needs to recognise numbers and then assign 
-   //them to the op1 op2 variables
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             if(isNaN(button.textContent) && button.textContent != 'AC' && button.textContent !== '=') //||isNaN(button.textContent) )
@@ -72,10 +72,26 @@ const buttons = document.querySelectorAll('button')
             }
             else if(button.textContent === '=') {
                 console.log('Equals button')
-                showCalcs()
+                Operate(op1, operand, op2)
+                
             }
-            if(op1 = 0) {
-
+            else {
+                //this works for op1 to screen but i need to get rid of the null
+                //at the beginning
+                op1 += button.textContent
+                
+                 
+                 //*************** */
+                parsed = parseInt(button.textContent)
+              
+                if(operand === null && button.textContent != 'AC' && button.textContent != '=') {
+                    //op1 = op1 +=parsed
+                    
+                }
+               
+                screen.textContent = op1
+                console.log(`${op1}`)
+                
             }
             console.log(`button text content ${button.textContent}`)
             
@@ -116,7 +132,11 @@ function Divide(a,b) {
 }
 
 function Reset() {
-    ans = 0;
+    ans = null;
+    numberStore = []
+    op1 = null;
+    op2 = null;
+    operand = null;
     console.log(ans)
 }
 
@@ -137,21 +157,15 @@ switch(operand) {
 }
 }
 //!!!!!! REMEMBER TO TEST BUTTONS WOITH CONSOLE LOG
-function showCalcs(num1, op, num2) {
+function showCalcs() {
     screen.textContent = ''
-    /*if(!screen) {
-        console.error("Screen element not found")
-        return;
-    }*/
         
-        op1 = num1;
-        operand = op;
-        op2 = num2;
+       
 
     
-    screen.textContent += num1 
     
-    Operate(num1, op, num2)
+    
+    //Operate()
    
     
 
