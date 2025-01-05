@@ -1,7 +1,7 @@
 //Global Variables
 let ans = 0;
-let op1 = null;
-let op2 = null;
+let op1 = '';
+let op2 = '';
 let operand = null;
 let op1Store = []
 let parsed
@@ -60,10 +60,8 @@ const buttons = document.querySelectorAll('button')
             {
                 operand = button.textContent
                 console.log(`${button.textContent} is operand`)
-                if(op1 = 0 && operand === undefined) {
-                    op1 = button.textContent
-                    console.log(`op1 ${op1}`)
-                }
+                screen.textContent += operand
+                
             }
             else if(button.textContent === 'AC') {
                 console.log('Reset Button')
@@ -73,27 +71,28 @@ const buttons = document.querySelectorAll('button')
             else if(button.textContent === '=') {
                 console.log('Equals button')
                 Operate(op1, operand, op2)
+                screen.textContent = ans
                 
             }
             else {
-                //this works for op1 to screen but i need to get rid of the null
-                //at the beginning
-                op1 += button.textContent
-                
-                 
-                 //*************** */
-                parsed = parseInt(button.textContent)
-              
-                if(operand === null && button.textContent != 'AC' && button.textContent != '=') {
-                    //op1 = op1 +=parsed
-                    
+                if(operand === null) {
+                    screen.textContent = ''
+                    op1 += button.textContent
+                    screen.textContent += op1
+                    console.log(`op1 ${op1}`)
                 }
-               
-                screen.textContent = op1
-                console.log(`${op1}`)
+                else if(operand != null) {
+                    op2 += button.textContent
+                    screen.textContent += op2
+                    console.log(`op2 ${op2}`)
+                }
+                
+            
                 
             }
+            
             console.log(`button text content ${button.textContent}`)
+            console.log(`${op1}${operand}${op2}`)
             
         })
         return button
@@ -108,25 +107,25 @@ calc.appendChild(buttonsContainer)
 
 //Functions
 function Add(a,b) {
-    ans = a + b
+    ans = parseFloat(a) + parseFloat(b)
     console.log(`${a} + ${b}`)
     console.log(ans)
 }
 
 function Subtract(a,b) {
-    ans = a - b
+    ans = parseFloat(a) - parseFloat(b)
     console.log(`${a} - ${b}`)
     console.log(ans)
 }
 
 function Multiply(a,b) {
-    ans = a * b
+    ans = parseFloat(a) * parseFloat(b)
     console.log(`${a} x ${b}`)
     console.log(ans)
 }
 
 function Divide(a,b) {
-    ans = a / b
+    ans = parseFloat(a) / parseFloat(b)
     console.log(`${a} / ${b}`)
     console.log(ans)
 }
@@ -134,10 +133,11 @@ function Divide(a,b) {
 function Reset() {
     ans = null;
     numberStore = []
-    op1 = null;
-    op2 = null;
+    op1 = '';
+    op2 = '';
     operand = null;
-    console.log(ans)
+    screen.textContent = '0'
+    
 }
 
 function Operate(op1, operand, op2) {
@@ -154,6 +154,11 @@ switch(operand) {
     case '/' : Divide(op1,op2)
     break;
     default : console.log("ERROR")
+
+    op1 = ans
+    op2 = ''
+
+
 }
 }
 //!!!!!! REMEMBER TO TEST BUTTONS WOITH CONSOLE LOG
