@@ -3,7 +3,6 @@ let ans = 0;
 let op1 = '';
 let op2 = '';
 let operand = null;
-let op1Store = []
 let parsed
 
 
@@ -16,6 +15,7 @@ const container = document.querySelector('#container')
 const calc = document.createElement('div')
 calc.className = 'calc'
 calc.textContent = 'Colculator'
+calc.setAttribute('style', "color: orange;")
 container.appendChild(calc)
 
 const screen = document.createElement('div')
@@ -56,7 +56,7 @@ calc.appendChild(buttonsContainer)
 const buttons = document.querySelectorAll('button')
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            if(isNaN(button.textContent) && button.textContent != 'AC' && button.textContent !== '=') //||isNaN(button.textContent) )
+            if(isNaN(button.textContent) && button.textContent != 'AC' && button.textContent !== '=') 
             {
                 operand = button.textContent
                 console.log(`${button.textContent} is operand`)
@@ -79,23 +79,25 @@ const buttons = document.querySelectorAll('button')
                     screen.textContent = ''
                     op1 += button.textContent
                     screen.textContent += op1
-                    console.log(`op1 ${op1}`)
+                    //console.log(`op1 ${op1}`)
                 }
-                else if(operand != null) {
+                else {
+                    
                     op2 += button.textContent
                     screen.textContent += op2
-                    console.log(`op2 ${op2}`)
+                    //console.log(`op2 ${op2}`)
+                    
                 }
                 
             
                 
             }
             
-            console.log(`button text content ${button.textContent}`)
+           
             console.log(`${op1}${operand}${op2}`)
             
         })
-        return button
+        
     })
 
 calc.appendChild(buttonsContainer)
@@ -131,8 +133,7 @@ function Divide(a,b) {
 }
 
 function Reset() {
-    ans = null;
-    numberStore = []
+    ans = 0;
     op1 = '';
     op2 = '';
     operand = null;
@@ -154,28 +155,20 @@ switch(operand) {
     case '/' : Divide(op1,op2)
     break;
     default : console.log("ERROR")
+    
+    }
+    Continue()
+}
 
-    op1 = ans
+function Continue()
+{
+    screen.textContent = ans
+    operand = null
+    op1 = ans.toString()
     op2 = ''
-
-
+    console.log(`operators after operation has been called ${op1} ${op2}`)
 }
-}
-//!!!!!! REMEMBER TO TEST BUTTONS WOITH CONSOLE LOG
-function showCalcs() {
-    screen.textContent = ''
-        
-       
 
-    
-    
-    
-    //Operate()
-   
-    
-
-   
-}
 
 //END Functions
-showCalcs(1,'-',1)
+
