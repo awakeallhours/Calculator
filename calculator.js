@@ -1,5 +1,5 @@
 //Global Variables
-let ans = 0;
+let ans = '';
 let op1 = '';
 let op2 = '';
 let operand = null;
@@ -136,7 +136,7 @@ function Divide(a,b) {
 }
 
 function Reset() {
-    ans = 0;
+    ans = '';
     op1 = '';
     op2 = '';
     operand = null;
