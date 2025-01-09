@@ -80,8 +80,13 @@ const buttons = document.querySelectorAll('button')
                     op1 += button.textContent
                     screen.textContent += op1
                     console.log(`op1 ${op1}`)
+                    screen.textContent = op1
+                    //console.log(`op1 ${op1}`)
                 }
                 else {
+                    if (screen.textContent !== op1 + operand + op2) { 
+                        screen.textContent = op1 + operand; 
+                    }
                     
                     op2 += button.textContent
                     screen.textContent = op1 + operand + op2
