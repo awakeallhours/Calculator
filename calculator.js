@@ -78,14 +78,17 @@ const buttons = document.querySelectorAll('button')
                 if(operand === null) {
                     screen.textContent = ''
                     op1 += button.textContent
-                    screen.textContent += op1
+                    screen.textContent = op1
                     //console.log(`op1 ${op1}`)
                 }
                 else {
+                    if (screen.textContent !== op1 + operand + op2) { 
+                        screen.textContent = op1 + operand; 
+                    }
                     
                     op2 += button.textContent
                     screen.textContent += op2
-                    //console.log(`op2 ${op2}`)
+                    console.log(`op2 ${op2}`)
                     
                 }
                 
